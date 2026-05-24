@@ -4,6 +4,11 @@
   justify-content: center;
 }
 
+#navbar > div {
+  justify-content: center !important;
+  flex: 1;
+}
+
 :root {
   --default-border-color: var(--gray-200);
 }
