@@ -9,6 +9,13 @@
   flex: 1;
 }
 
+#navbar .nav-tabs {
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 20;
+}
+
 :root {
   --default-border-color: var(--gray-200);
 }
