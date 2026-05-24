@@ -117,7 +117,7 @@
     "primary": {
       "type": "button",
       "label": "Get Started",
-      "href": "https://artnex.ai/signup"
+      "href": "https://artnex.app/login"
     }
   },
   "footer": {
