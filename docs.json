@@ -109,6 +109,9 @@
       }
     ]
   },
+  "search": {
+    "location": "header"
+  },
   "navbar": {
     "links": [],
     "primary": {
