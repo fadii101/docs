@@ -110,6 +110,14 @@
               "account/managing-credits",
               "account/profile-settings"
             ]
+          },
+          {
+            "group": "Changelog",
+            "icon": "history",
+            "expanded": true,
+            "pages": [
+              "changelog"
+            ]
           }
         ]
       },
