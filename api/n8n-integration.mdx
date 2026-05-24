@@ -1,0 +1,220 @@
+---
+title: "Connect Artnex to n8n Automation Workflows"
+description: "Trigger Artnex AI actions from n8n workflows using webhooks. Set up event-driven automation to generate images, post to social media, and more."
+keywords: ["artnex n8n integration", "n8n webhook", "automation workflow", "artnex automation", "n8n artnex"]
+---
+
+The Artnex n8n integration lets you connect Artnex events to any tool or service in your n8n workflow. When something happens in Artnex — a user generates an image, signs up, or hits a usage limit — Artnex fires a webhook to your n8n instance, where you can route the data to Slack, a database, a social media scheduler, an email service, or anywhere else n8n connects.
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+- An Artnex account (any plan)
+- An n8n instance — either [n8n Cloud](https://n8n.io) or a self-hosted installation
+- Access to the Artnex **N8n Integration** page in your dashboard
+
+## Setup walkthrough
+
+<Steps>
+  <Step title="Open the N8n Integration page in Artnex">
+    Log in to your Artnex account and navigate to **Settings → N8n Integration**. This page is where you configure your webhook URL and test the connection.
+  </Step>
+
+  <Step title="Create a new workflow in n8n">
+    In your n8n instance, click **New Workflow**. Give it a descriptive name such as `Artnex — Image Generated`.
+  </Step>
+
+  <Step title="Add a Webhook trigger node">
+    In the workflow canvas, click the **+** button and search for **Webhook**. Add it as the first node in your workflow.
+
+    Configure the Webhook node:
+
+    - **HTTP Method:** `POST`
+    - **Path:** A memorable identifier such as `/artnex-events` or `/artnex-image-generated`
+    - **Response Mode:** `Respond Immediately`
+
+    After saving, n8n shows you a webhook URL in the format:
+
+    ```
+    https://your-n8n-instance.com/webhook/artnex-events
+    ```
+
+    Copy this URL.
+  </Step>
+
+  <Step title="Paste your webhook URL into Artnex">
+    Return to the Artnex **N8n Integration** page and paste your n8n webhook URL into the **n8n Webhook URL** field.
+  </Step>
+
+  <Step title="Test the connection">
+    Use one of the **Quick Triggers** on the integration page to send a test payload to your webhook. In n8n, open the **Executions** panel for your workflow — you should see a new execution with the test data.
+  </Step>
+
+  <Step title="Add your automation logic">
+    Connect additional n8n nodes after the Webhook trigger to process the data. Common next steps include:
+
+    - **Slack** — post a notification when an image is generated
+    - **HTTP Request** — forward the image URL to an external service
+    - **Google Sheets** — log each generation to a spreadsheet
+    - **Twitter/X or Instagram** — auto-post generated images to social media
+    - **Airtable or Notion** — add records to a content database
+  </Step>
+</Steps>
+
+## Webhook payload format
+
+Artnex sends a JSON object to your n8n webhook for each event. Every payload includes the `event` type, a `timestamp`, and a `source` identifier, along with event-specific fields.
+
+### image_generated
+
+Fired when a user successfully generates an image.
+
+```json
+{
+  "event": "image_generated",
+  "model": "flux-2-pro",
+  "prompt": "A beautiful sunset over mountains",
+  "images_count": 1,
+  "user_id": "usr_abc123",
+  "timestamp": "2026-05-24T10:30:00.000Z",
+  "source": "artnex_app"
+}
+```
+
+### user_signup
+
+Fired when a new user creates an account.
+
+```json
+{
+  "event": "user_signup",
+  "user_email": "creator@example.com",
+  "signup_method": "email",
+  "plan": "free",
+  "timestamp": "2026-05-24T10:30:00.000Z",
+  "source": "artnex_app"
+}
+```
+
+### usage_limit_reached
+
+Fired when a user hits their daily usage limit.
+
+```json
+{
+  "event": "usage_limit_reached",
+  "user_id": "usr_abc123",
+  "current_usage": 500,
+  "limit": 500,
+  "plan": "free",
+  "timestamp": "2026-05-24T10:30:00.000Z",
+  "source": "artnex_app"
+}
+```
+
+### usage_update
+
+Fired periodically with current usage statistics for a user.
+
+```json
+{
+  "event": "usage_update",
+  "current": 250,
+  "limit": 500,
+  "remaining": 250,
+  "timestamp": "2026-05-24T10:30:00.000Z",
+  "source": "artnex_app"
+}
+```
+
+## Triggering webhooks from the API
+
+You can also trigger webhooks programmatically by calling the Artnex API directly, rather than waiting for a platform event. This is useful when building custom integrations or testing your n8n workflow from your own code.
+
+<CodeGroup>
+
+```bash curl
+curl --request POST \
+  --url https://api.artnex.ai/v1/webhook/trigger \
+  --header "Authorization: Bearer YOUR_API_KEY" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "webhook_url": "https://your-n8n-instance.com/webhook/artnex-events",
+    "event": "image_generated",
+    "model": "flux-2-pro",
+    "prompt": "A beautiful sunset over mountains",
+    "images_count": 1,
+    "user_id": "usr_abc123"
+  }'
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    "https://api.artnex.ai/v1/webhook/trigger",
+    headers={
+        "Authorization": "Bearer YOUR_API_KEY",
+        "Content-Type": "application/json",
+    },
+    json={
+        "webhook_url": "https://your-n8n-instance.com/webhook/artnex-events",
+        "event": "image_generated",
+        "model": "flux-2-pro",
+        "prompt": "A beautiful sunset over mountains",
+        "images_count": 1,
+        "user_id": "usr_abc123",
+    },
+)
+
+print(response.json())
+```
+
+```javascript JavaScript
+const response = await fetch("https://api.artnex.ai/v1/webhook/trigger", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    webhook_url: "https://your-n8n-instance.com/webhook/artnex-events",
+    event: "image_generated",
+    model: "flux-2-pro",
+    prompt: "A beautiful sunset over mountains",
+    images_count: 1,
+    user_id: "usr_abc123",
+  }),
+});
+
+const data = await response.json();
+console.log(data);
+```
+
+</CodeGroup>
+
+## Example use cases
+
+<AccordionGroup>
+  <Accordion title="Auto-post generated images to social media">
+    When Artnex fires an `image_generated` event, your n8n workflow can pick up the image URL and forward it to a Twitter/X, Instagram, or LinkedIn node for automatic posting. Add a filtering condition to only post images that match a specific prompt keyword or model.
+  </Accordion>
+  <Accordion title="Build a content pipeline">
+    Chain `image_generated` events into a Notion or Airtable database to maintain a library of all generated assets. Add metadata fields like model, prompt, and timestamp automatically. Use this database as a content calendar for your creative team.
+  </Accordion>
+  <Accordion title="Notify your team on Slack">
+    Send a Slack message to your `#design` channel every time a new image is generated, including the prompt and a preview link. Your team stays informed about new assets without having to log in to Artnex.
+  </Accordion>
+  <Accordion title="Monitor usage and send alerts">
+    Listen to `usage_limit_reached` events and trigger a Slack or email alert so you can upgrade affected accounts before they experience downtime. You can also log `usage_update` events to a time-series database for usage analytics.
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+  Artnex routes webhook requests through a secure backend proxy to prevent CORS issues and ensure delivery. You do not need to expose any Artnex credentials in your n8n workflow — the connection is one-directional, from Artnex to your n8n webhook URL.
+</Note>
+
+<Warning>
+  Keep your n8n webhook URL private. Anyone who obtains the URL can send arbitrary payloads to your workflow. If you suspect your webhook URL has been exposed, delete the n8n Webhook node and create a new one with a fresh URL.
+</Warning>

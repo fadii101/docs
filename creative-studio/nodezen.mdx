@@ -1,0 +1,189 @@
+---
+title: "Automate AI Workflows with NodeZen"
+description: "A visual workflow builder that lets you chain AI tools together. Drag nodes onto a canvas, connect them, and run multi-step AI pipelines with one click."
+keywords: ["nodezen", "workflow", "automation", "image generation", "video generation", "AI pipeline", "nodes"]
+---
+
+NodeZen is a visual workflow builder inside Artnex. You connect AI tools together as nodes on a canvas, define how data flows between them, and run the entire pipeline with a single click. Use it to automate repetitive AI tasks, build multi-step image generation pipelines, or create reusable workflows you can run again and again.
+
+## Navigate to NodeZen
+
+Go to **Tools → NodeZen** in the left sidebar. The NodeZen editor opens with a blank canvas and a node palette on the left.
+
+---
+
+## The editor layout
+
+<Columns cols={2}>
+  <Card title="Node canvas" icon="layout">
+    The central area where you drag, drop, and connect nodes. Supports pan and zoom.
+  </Card>
+  <Card title="Node palette" icon="grid">
+    The left panel listing all available node types, grouped by category. Drag any node onto the canvas to add it.
+  </Card>
+  <Card title="Properties panel" icon="sliders">
+    Opens on the right when you click a node. Configure the node's settings such as model, aspect ratio, or number of outputs.
+  </Card>
+  <Card title="Top toolbar" icon="tool">
+    Contains **Play** to run the workflow, **Save** to save it, **Export** to export it, and undo/redo controls.
+  </Card>
+</Columns>
+
+---
+
+## Available node types
+
+Nodes are grouped into six categories.
+
+<Tabs>
+  <Tab title="Input">
+    Input nodes supply data to your workflow. They have no incoming connections.
+
+    | Node | Description |
+    |---|---|
+    | **Text Prompt** | Enter a text prompt to feed into generation nodes |
+    | **Image Upload** | Upload an image from your computer |
+    | **Style Reference** | Upload a reference image to guide style in generation |
+  </Tab>
+  <Tab title="Generation">
+    Generation nodes call AI models to produce new content.
+
+    | Node | Credits | Description |
+    |---|---|---|
+    | **ImageZen Generator** | 20 | Generate images from a text prompt and optional image input |
+    | **VideoZen Generator** | 200 | Generate videos from a text prompt and optional image input |
+    | **VoiceZen TTS** | 10 | Convert text to speech audio |
+  </Tab>
+  <Tab title="Editing">
+    Editing nodes transform existing images.
+
+    | Node | Credits | Description |
+    |---|---|---|
+    | **Background Remover** | 5 | Remove the background from an image |
+    | **Image Upscaler** | 10 | Increase image resolution (default 2×) |
+  </Tab>
+  <Tab title="Utility">
+    Utility nodes help you build more flexible workflows.
+
+    | Node | Description |
+    |---|---|
+    | **Prompt Mixer** | Combine two text prompts into one, with configurable weights |
+    | **Batch Generator** | Run a node multiple times to produce several variations at once |
+  </Tab>
+  <Tab title="Export">
+    Export nodes save or download the output of your workflow.
+
+    | Node | Description |
+    |---|---|
+    | **Export Image** | Download the result as a PNG file |
+    | **Export Video** | Download the result as an MP4 file |
+    | **Save to Gallery** | Save the result to your Artnex Creations gallery |
+  </Tab>
+</Tabs>
+
+---
+
+## Connecting nodes
+
+Every node has **input handles** (left side) and **output handles** (right side), shown as small dots on the node edges.
+
+To connect two nodes:
+
+1. Hover over an output handle on the source node until the cursor changes.
+2. Click and drag from the output handle to the input handle of the destination node.
+3. Release to create the connection. A animated line (edge) appears between the nodes.
+
+To delete a connection, click the edge and press `Delete`.
+
+<Tip>
+When you drag a connection line and release it on an empty part of the canvas, NodeZen shows a menu of compatible nodes you can add and auto-connect in one step.
+</Tip>
+
+---
+
+## Running a workflow
+
+Click the **Play** button in the top toolbar to execute the workflow. NodeZen processes nodes in order, passing outputs downstream through the edges you have drawn. Each node shows a status indicator:
+
+- **Idle** — waiting to run
+- **Running** — currently processing
+- **Success** — completed, output available
+- **Error** — failed, hover for the error message
+
+<Note>
+Running a workflow deducts credits for every generation and editing node it contains. The total credit cost is calculated from all nodes before execution begins. You will see a confirmation if you do not have enough credits.
+</Note>
+
+---
+
+## Saving and naming a workflow
+
+Click **Save** in the top toolbar. A dialog asks for a workflow name and optional description. Enter a name and click **Save**.
+
+Saved workflows appear in the **My Workflows** tab on the left panel. Click any saved workflow to load it back onto the canvas.
+
+---
+
+## Workflow templates
+
+NodeZen includes a library of built-in workflow templates so you can start from a working example instead of building from scratch.
+
+Open the **Templates** tab in the left panel to browse available templates. Templates are grouped into categories: **image**, **video**, **audio**, and **mixed**. Featured templates appear at the top.
+
+Click **Use Template** on any template card to load it onto the canvas. You can then run it immediately or modify it to suit your needs.
+
+---
+
+## Exporting a workflow
+
+Click **Export** in the top toolbar to open the Export Workflow dialog. This saves your workflow configuration (nodes, edges, and settings) so you can import it later or share it with others.
+
+---
+
+## Use cases
+
+<AccordionGroup>
+  <Accordion title="Automated image generation pipeline">
+    Connect a **Text Prompt** node → **ImageZen Generator** → **Background Remover** → **Export Image**. Enter your prompt once and the workflow generates an image, removes its background, and downloads the result automatically.
+  </Accordion>
+  <Accordion title="Batch image variations">
+    Connect a **Text Prompt** node → **Batch Generator** → **ImageZen Generator** → **Save to Gallery**. The Batch Generator runs the image generator multiple times, producing several variations from the same prompt in one click.
+  </Accordion>
+  <Accordion title="Image-to-video pipeline">
+    Connect an **Image Upload** node → **VideoZen Generator** → **Export Video**. Upload a photo and the workflow animates it into a video and downloads the result.
+  </Accordion>
+  <Accordion title="Text-to-speech with style-guided image">
+    Connect a **Text Prompt** node to both a **VoiceZen TTS** node and an **ImageZen Generator** node. Use a **Style Reference** node to guide the image style. Run the workflow to produce a matching audio clip and image together.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Build your first workflow
+
+<Steps>
+  <Step title="Open NodeZen">
+    Go to **Tools → NodeZen** in the sidebar.
+  </Step>
+  <Step title="Add a Text Prompt node">
+    Find **Text Prompt** in the node palette under the **Input** category. Drag it onto the canvas.
+  </Step>
+  <Step title="Configure the prompt">
+    Click the **Text Prompt** node to select it. In the Properties panel on the right, type your image description — for example, `A neon-lit cityscape at night, photorealistic`.
+  </Step>
+  <Step title="Add an ImageZen Generator node">
+    Drag the **ImageZen Generator** node from the palette onto the canvas, to the right of the Text Prompt node.
+  </Step>
+  <Step title="Connect the nodes">
+    Drag from the **Text** output handle of the Text Prompt node to the **Prompt** input handle of the ImageZen Generator node. An animated edge connects them.
+  </Step>
+  <Step title="Add an Export Image node">
+    Drag the **Export Image** node onto the canvas to the right of the ImageZen Generator. Connect the **Image** output of the generator to the **Image** input of the export node.
+  </Step>
+  <Step title="Run the workflow">
+    Click **Play** in the top toolbar. NodeZen runs the workflow. When the ImageZen Generator node turns green, your image is ready and the export node downloads it automatically.
+  </Step>
+  <Step title="Save the workflow">
+    Click **Save**, give the workflow a name, and click **Save** in the dialog. It now appears in your **My Workflows** tab for future use.
+  </Step>
+</Steps>
