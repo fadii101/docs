@@ -1,0 +1,167 @@
+---
+title: 'Create AI Videos with VideoZen'
+description: 'Generate stunning AI videos from text or images using VideoZen — choose from 11 top models including Google Veo 3.1, OpenAI Sora 2, and Kling.'
+sidebarTitle: 'VideoZen'
+icon: 'video'
+keywords: ['video generation', 'text-to-video', 'image-to-video', 'AI video', 'Veo', 'Sora', 'Kling']
+---
+
+VideoZen is Artnex's main AI video studio. You can generate videos from a text prompt alone, or bring an image to life by animating it into a full video clip. With over 11 models from Google, OpenAI, Alibaba, Kling, and ByteDance, you have the right tool for every creative brief — from quick social content to cinematic sequences.
+
+## Modes
+
+VideoZen offers two generation modes, selectable at the top of the prompt bar.
+
+<Tabs>
+  <Tab title="Text-to-video">
+    Write a prompt describing the scene, motion, and style you want. VideoZen sends it to the selected model and returns a video clip. No source image is needed.
+  </Tab>
+  <Tab title="Image-to-video">
+    Upload a starting image (and optionally an ending image for supported models) to animate it into video. Your prompt guides the motion and continuation of the scene.
+  </Tab>
+</Tabs>
+
+## Available models
+
+Each model has different strengths, supported resolutions, and credit costs. Credits listed are the display credits charged per generation.
+
+<CardGroup cols={2}>
+  <Card title="Veo 3.1" icon="google">
+    Google's latest high-quality text-to-video model. Supports 720p and 1080p, aspect ratios 16:9 and 9:16, and optional audio generation.
+
+    **3,000 credits** per video
+  </Card>
+  <Card title="Veo 3.1 Fast" icon="google">
+    A faster variant of Veo 3.1 with the same resolution and audio options — ideal when turnaround time matters.
+
+    **3,500 credits** per video
+  </Card>
+  <Card title="Veo 3" icon="google">
+    The previous generation of Google Veo. Solid quality with audio support at 720p and 1080p.
+
+    **2,500 credits** per video
+  </Card>
+  <Card title="Veo 3 Fast" icon="google">
+    A faster Veo 3 variant for quick iterations. Outputs at 720p or 1080p with audio generation support.
+
+    **2,000 credits** per video
+  </Card>
+  <Card title="Sora 2" icon="openai">
+    OpenAI's powerful text-to-video model. Supports durations of 4, 8, and 12 seconds in 16:9 and 9:16.
+
+    **3,500 credits** per video
+  </Card>
+  <Card title="Sora 2 Pro" icon="openai">
+    Extended capabilities version of Sora 2 with higher output fidelity.
+
+    **6,000 credits** per video
+  </Card>
+  <Card title="Wan 2.5" icon="circle">
+    Alibaba's WAN text-to-video model with prompt expansion support. Available in 16:9, 9:16, and 1:1.
+
+    **3,500 credits** per video
+  </Card>
+  <Card title="Wan 2.6" icon="circle">
+    Alibaba's latest WAN model with improved coherence and prompt understanding.
+
+    **5,000 credits** per video
+  </Card>
+  <Card title="Kling v2.5 Turbo" icon="zap">
+    Fast Kling generation with guidance scale control. Supports 16:9, 9:16, and 1:1 aspect ratios.
+
+    **1,500 credits** per video
+  </Card>
+  <Card title="Kling v2.6 Pro" icon="zap">
+    Kling's latest model with native audio generation and extended duration options up to 16 seconds.
+
+    **5,500 credits** per video
+  </Card>
+  <Card title="Seedance v1.5 Pro" icon="sparkles">
+    ByteDance model with fine-grained camera control, audio generation, and flexible durations from 4–12 seconds.
+
+    **2,600 credits** per video
+  </Card>
+</CardGroup>
+
+## Settings
+
+You can adjust the following settings before generating a video. Available options vary by model.
+
+| Setting | Options | Notes |
+|---|---|---|
+| Aspect ratio | 16:9, 9:16, 1:1 | 1:1 is available on Kling and WAN models |
+| Duration | 4–12 seconds | Default is 5s; exact options depend on the model |
+| Resolution | 720p, 1080p | Some models also support 480p |
+
+## Generate a text-to-video
+
+<Steps>
+  <Step title="Open VideoZen">
+    Navigate to **Tools > Video > VideoZen** in the Artnex sidebar.
+  </Step>
+  <Step title="Select Text-to-Video mode">
+    At the top of the prompt bar, click **Text-to-Video** to make sure you are in the right mode.
+  </Step>
+  <Step title="Write your prompt">
+    In the text area, describe the video you want to create. Be specific about the subject, setting, camera movement, lighting, and mood for best results.
+
+    <Tip>
+      Use the Prompt Enhancer (the sparkle icon in the prompt bar) to automatically expand and improve your prompt before generation. This works especially well for short or vague descriptions.
+    </Tip>
+  </Step>
+  <Step title="Choose a model">
+    Click the model selector button in the control bar. A dialog lists all available models grouped by provider. Select the one that fits your quality and budget needs.
+  </Step>
+  <Step title="Adjust settings">
+    Use the aspect ratio, duration, and resolution controls to match the output format you need — for example, 9:16 for vertical short-form content or 16:9 for widescreen.
+  </Step>
+  <Step title="Generate">
+    Click **Generate**. The credit cost for the selected model is shown next to the button before you confirm. Generation typically takes 30 seconds to 3 minutes depending on the model and duration.
+  </Step>
+  <Step title="Download your video">
+    Once the video appears in your creations gallery, click the **Download** icon to save it to your device.
+  </Step>
+</Steps>
+
+## Generate an image-to-video
+
+<Steps>
+  <Step title="Switch to Image-to-Video mode">
+    Click **Image-to-Video** in the mode selector at the top of the prompt bar.
+  </Step>
+  <Step title="Upload a start image">
+    Click **Add Image** (or **Start**) in the control bar to upload the image you want to animate. The image becomes the first frame of the video.
+  </Step>
+  <Step title="Optionally upload an end image">
+    For models that support it — including Seedance v1.5 Pro, Kling v2.5 Turbo Pro I2V, and Veo 3.1 I2V — you can also upload an end frame. The model generates the motion that connects the two frames.
+  </Step>
+  <Step title="Write a motion prompt">
+    Describe how you want the image to move or evolve. For example: *"The camera slowly zooms in while the flowers sway gently in the wind."*
+  </Step>
+  <Step title="Select a model and settings">
+    Choose an image-to-video capable model from the model selector. Adjust aspect ratio, duration, and resolution to match your intended output.
+  </Step>
+  <Step title="Generate">
+    Click **Generate** to start the process. Credits are charged once the video is successfully produced.
+  </Step>
+</Steps>
+
+## Prompt Enhancer
+
+The Prompt Enhancer is available as a sparkle icon inside the prompt bar. When you click it, Artnex rewrites your prompt with richer descriptive language, camera direction, and cinematic detail before sending it to the model.
+
+<Note>
+  The Prompt Enhancer replaces the text in the prompt field with the enhanced version. Review the result before generating so you can adjust anything that doesn't match your vision.
+</Note>
+
+## Downloading videos
+
+Generated videos appear in your **My Creations** gallery on the VideoZen page. To download a video:
+
+1. Hover over the video thumbnail in the gallery.
+2. Click the **Download** icon.
+3. The file saves to your default downloads folder.
+
+<Tip>
+  All videos are saved to your Artnex Creations library and remain accessible from any device while you are signed in.
+</Tip>
