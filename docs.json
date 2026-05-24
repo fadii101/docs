@@ -31,11 +31,6 @@
           "href": "/"
         },
         {
-          "anchor": "API Reference",
-          "icon": "code",
-          "href": "/api/overview"
-        },
-        {
           "anchor": "Help",
           "icon": "life-buoy",
           "href": "https://artnex.ai/help"
@@ -117,41 +112,6 @@
             "expanded": true,
             "pages": [
               "changelog"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "Overview",
-            "icon": "book-open",
-            "expanded": true,
-            "pages": [
-              "api/overview",
-              "api/authentication"
-            ]
-          },
-          {
-            "group": "Endpoints",
-            "icon": "plug",
-            "expanded": true,
-            "pages": [
-              "api/generate-image",
-              "api/edit-image",
-              "api/generate-video",
-              "api/text-to-speech",
-              "api/upscale",
-              "api/remove-background"
-            ]
-          },
-          {
-            "group": "Integrations",
-            "icon": "webhook",
-            "expanded": true,
-            "pages": [
-              "api/n8n-integration"
             ]
           }
         ]
