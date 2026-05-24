@@ -1,0 +1,166 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "almond",
+  "name": "Artnex",
+  "description": "AI-powered creative platform for generating and editing images, videos, and audio.",
+  "colors": {
+    "primary": "#e55b6b",
+    "light": "#6767e3",
+    "dark": "#0c0c0c"
+  },
+  "favicon": "https://media.brand.dev/fb9ca0c6-e572-43f1-8205-108c2d7377e2.jpg",
+  "logo": {
+    "light": "https://media.brand.dev/4e1f9589-b1f7-49da-bfd7-71a7050c618b.svg",
+    "dark": "https://media.brand.dev/4e1f9589-b1f7-49da-bfd7-71a7050c618b.svg"
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs"
+  },
+  "contextual": {
+    "options": ["copy", "view", "assistant", "mcp", "add-mcp"]
+  },
+  "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Home",
+          "icon": "house",
+          "href": "/"
+        },
+        {
+          "anchor": "API Reference",
+          "icon": "code",
+          "href": "/api/overview"
+        },
+        {
+          "anchor": "Help",
+          "icon": "life-buoy",
+          "href": "https://artnex.ai/help"
+        }
+      ]
+    },
+    "directory": "card",
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "icon": "rocket",
+            "expanded": true,
+            "pages": [
+              "introduction",
+              "quickstart",
+              "credits-and-pricing"
+            ]
+          },
+          {
+            "group": "Image Tools",
+            "icon": "image",
+            "expanded": true,
+            "pages": [
+              "image-tools/imagezen",
+              "image-tools/background-remover",
+              "image-tools/image-upscaler",
+              "image-tools/headshots",
+              "image-tools/product-photography"
+            ]
+          },
+          {
+            "group": "Video Tools",
+            "icon": "video",
+            "expanded": true,
+            "pages": [
+              "video-tools/videozen",
+              "video-tools/video-extend",
+              "video-tools/lip-sync",
+              "video-tools/video-upscaler"
+            ]
+          },
+          {
+            "group": "Audio Tools",
+            "icon": "volume-2",
+            "expanded": true,
+            "pages": [
+              "audio-tools/text-to-speech",
+              "audio-tools/voice-cloning",
+              "audio-tools/music-generator",
+              "audio-tools/sound-effects"
+            ]
+          },
+          {
+            "group": "Creative Studio",
+            "icon": "palette",
+            "expanded": true,
+            "pages": [
+              "creative-studio/canvas",
+              "creative-studio/templates",
+              "creative-studio/nodezen"
+            ]
+          },
+          {
+            "group": "Account & Billing",
+            "icon": "user",
+            "expanded": true,
+            "pages": [
+              "account/signup-and-login",
+              "account/managing-credits",
+              "account/profile-settings"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Overview",
+            "icon": "book-open",
+            "expanded": true,
+            "pages": [
+              "api/overview",
+              "api/authentication"
+            ]
+          },
+          {
+            "group": "Endpoints",
+            "icon": "plug",
+            "expanded": true,
+            "pages": [
+              "api/generate-image",
+              "api/edit-image",
+              "api/generate-video",
+              "api/text-to-speech",
+              "api/upscale",
+              "api/remove-background"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "icon": "webhook",
+            "expanded": true,
+            "pages": [
+              "api/n8n-integration"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "navbar": {
+    "links": [],
+    "primary": {
+      "type": "button",
+      "label": "Get Started",
+      "href": "https://artnex.ai/signup"
+    }
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/artnex_ai"
+    }
+  }
+}

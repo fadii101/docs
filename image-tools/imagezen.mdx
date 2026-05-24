@@ -1,0 +1,161 @@
+---
+title: 'Generate & Edit Images with ImageZen'
+description: "ImageZen is Artnex's AI image generation and editing hub. Choose from 14 models, write a prompt, and create stunning visuals in seconds."
+sidebarTitle: 'ImageZen'
+icon: 'image'
+keywords: ['image generation', 'AI images', 'text to image', 'image editing', 'ImageZen', 'Artnex']
+---
+
+ImageZen is the core image creation tool in Artnex. It brings together text-to-image generation, image-to-image editing, prompt enhancement, and image-to-prompt extraction — all in one interface. Whether you're creating from scratch or transforming an existing photo, ImageZen gives you a full model lineup to match your quality and speed needs.
+
+## Navigate to ImageZen
+
+Go to **Tools > Image > ImageZen** in the Artnex sidebar.
+
+## Available models
+
+ImageZen groups its models into three tiers: Fast, Pro, and Edit. Select a model by clicking the model button in the bottom control bar, then choosing from the dialog.
+
+<Tabs>
+  <Tab title="Fast models">
+    Fast models prioritize speed and are ideal for iteration and concept exploration.
+
+    | Model | Provider | Credits per generation | Best for |
+    |---|---|---|---|
+    | Z-Image Turbo | Wavespeed | 100 | Rapid concept testing |
+    | Nano Banana | Google | 240 | Fast generation with good quality |
+
+    <Note>Z-Image Turbo supports a **seed** parameter so you can reproduce or vary a specific result. Use `-1` for a random seed.</Note>
+  </Tab>
+  <Tab title="Pro models">
+    Pro models produce higher quality output and offer more resolution and control options.
+
+    | Model | Provider | Credits per generation | Notes |
+    |---|---|---|---|
+    | Seedream v4 | Wavespeed | 200 | High quality with strong prompt adherence |
+    | Flux 2 Pro | Wavespeed | 250 | Flexible resolutions up to 1536 px |
+    | Nano Banana Pro | Google | 800 | Multi-image generation; 1K–4K resolution |
+    | Seedream v4.5 | Bytedance | 800 | 4K output with crisp typography rendering |
+    | Nano Banana Pro Ultra | Google | 1,000 | 8K ultra-high resolution; 1K–8K resolution selector |
+    | GPT Image 2 | OpenAI | 60–3,960\* | Photorealistic; 1K–4K with quality control |
+
+    \*GPT Image 2 uses dynamic pricing based on resolution (1K/2K/4K) and quality (low/medium/high).
+
+    <Tip>If you need sharp text inside your image — labels, signs, logos — **Seedream v4.5** handles typography better than most models.</Tip>
+  </Tab>
+  <Tab title="Edit models">
+    Edit models require one or more reference images. They modify or blend those images according to your prompt.
+
+    | Model | Provider | Credits per edit | Notes |
+    |---|---|---|---|
+    | Nano Banana Edit | Google | 240 | Fast editing; supports aspect ratio control |
+    | Seedream v4 Edit | Bytedance | 200 | Creative transformations up to 4096×4096 |
+    | Nano Banana Pro Edit | Google | 800 | Professional editing; 1K–4K resolution |
+    | Seedream v4.5 Edit | Bytedance | 800 | Face and lighting preservation; 4K output |
+    | Nano Banana Pro Edit Ultra | Google | 1,000 | Ultra-high quality 4K/8K editing |
+    | GPT Image 2 Edit | OpenAI | 180–3,960\* | Blend up to 10 reference images; 1K–4K |
+
+    \*GPT Image 2 Edit uses the same dynamic pricing grid as GPT Image 2.
+
+    <Note>When you select an Edit model, the interface switches to edit mode automatically and requires at least one uploaded reference image before you can generate.</Note>
+  </Tab>
+</Tabs>
+
+## Generate an image
+
+<Steps>
+  <Step title="Open ImageZen">
+    Navigate to **Tools > Image > ImageZen**.
+  </Step>
+  <Step title="Write a prompt">
+    Type your description in the prompt field at the bottom of the screen. Be specific: include subject, style, lighting, and mood.
+  </Step>
+  <Step title="Select a model">
+    Click the model button in the control bar to open the model picker. Choose the model that fits your quality and credit budget.
+  </Step>
+  <Step title="Set aspect ratio">
+    Use the aspect ratio selector next to the model button. Options vary by model — most support 1:1, 16:9, 9:16, and more.
+  </Step>
+  <Step title="Click Create">
+    Click **Create** (with the credit cost displayed) to start generation. A progress indicator appears while your image is being generated.
+  </Step>
+  <Step title="Download or save">
+    When the image appears in your creations gallery, hover over it to reveal the download button. All generated images are automatically saved to your Creations library.
+  </Step>
+</Steps>
+
+## Use image-to-image (edit mode)
+
+Edit models let you upload a reference image and transform it using a text prompt.
+
+<Steps>
+  <Step title="Select an Edit model">
+    Open the model picker and choose any model from the **Edit Models** group. The interface updates to edit mode.
+  </Step>
+  <Step title="Upload reference images">
+    Click **Upload** in the control bar and select up to 10 images (PNG, JPEG, or WebP). Thumbnails appear in the prompt bar.
+  </Step>
+  <Step title="Describe the edit">
+    Write a prompt describing the change you want — for example, "change the background to a snowy forest" or "make the lighting more dramatic."
+  </Step>
+  <Step title="Click Edit">
+    Click **Edit** to run the generation. The edited image is saved to your Creations gallery automatically.
+  </Step>
+</Steps>
+
+<Warning>Edit models require at least one uploaded image. The **Edit** button stays disabled until you upload a reference.</Warning>
+
+## Prompt Enhancer
+
+The Prompt Enhancer rewrites your prompt to be more detailed and model-optimized, without changing your core idea.
+
+To use it in ImageZen:
+
+1. Type your prompt in the prompt field.
+2. Click the **sparkle icon** (✦) at the bottom-right of the prompt field.
+3. Artnex replaces your prompt with the enhanced version automatically.
+
+You can also use the standalone **Prompt Enhancer** tool at **Tools > Prompt Enhancer** for more control, including context, detail level, and tone settings.
+
+## Image-to-Prompt
+
+Image-to-Prompt analyzes an uploaded image and generates a descriptive prompt you can use — or modify — for generation.
+
+<Steps>
+  <Step title="Open the Image-to-Prompt dialog">
+    Click the **image icon** at the bottom-right of the prompt field to open the Image-to-Prompt dialog.
+  </Step>
+  <Step title="Upload an image">
+    Drop or select any image file. Artnex analyzes it and returns a detailed prompt describing the scene.
+  </Step>
+  <Step title="Apply or edit the prompt">
+    Click **Apply** to load the generated prompt into the prompt field, then edit it as needed before generating.
+  </Step>
+</Steps>
+
+## Downloading and saving creations
+
+All generated images are saved automatically to your Creations gallery, accessible from the ImageZen canvas or the global **Creations** section.
+
+To download an image:
+- Hover over any image in your gallery and click the **download icon**.
+- The file downloads in the format you selected at generation time (JPEG, PNG, or WebP depending on the model).
+
+## Tips for better prompts
+
+<CardGroup cols={2}>
+  <Card title="Be specific about style" icon="palette">
+    Instead of "a woman," write "a close-up portrait of a woman in soft natural light, editorial style, shallow depth of field." Specific style cues produce more consistent results.
+  </Card>
+  <Card title="Describe lighting" icon="sun">
+    Lighting has one of the biggest impacts on image quality. Include terms like "soft studio lighting," "golden hour," "dramatic side lighting," or "overcast diffused light."
+  </Card>
+  <Card title="Use the Prompt Enhancer" icon="sparkles">
+    If you're unsure how to phrase your idea, type a short description and click the sparkle button. The enhancer adds relevant technical details for you.
+  </Card>
+  <Card title="Iterate with seeds" icon="refresh-cw">
+    When using Z-Image Turbo, set a seed to lock in a composition you like, then vary only the prompt. Use -1 to get a new random result each time.
+  </Card>
+</CardGroup>
+
+<Tip>For portrait or social media content, 4:5 is often a better fit than 1:1 — it fills more of a phone screen and matches Instagram's recommended format.</Tip>

@@ -1,0 +1,109 @@
+---
+title: "Artnex REST API — Overview"
+description: "Programmatic access to Artnex AI creative tools. Learn about authentication, credit billing, rate limits, and JSON response formats."
+keywords: ["artnex api", "rest api", "ai image generation api", "base url", "rate limits"]
+---
+
+The Artnex REST API gives you programmatic access to every AI creative tool on the platform — image generation, image editing, video generation, text-to-speech, background removal, and upscaling — from any language or framework that can make HTTP requests.
+
+## Base URL
+
+All API requests go to:
+
+```
+https://api.artnex.ai/v1
+```
+
+Every endpoint is relative to this base. For example, the image generation endpoint is `POST https://api.artnex.ai/v1/generate`.
+
+## Authentication
+
+The API uses Bearer token authentication. Include your API key in the `Authorization` header of every request:
+
+```
+Authorization: Bearer YOUR_API_KEY
+```
+
+See the [Authentication guide](/api/authentication) for step-by-step instructions on generating and using your API key.
+
+## Credit-based billing
+
+Every API call deducts credits from your account balance. The number of credits consumed depends on the model and operation you choose. Credits never expire, and you can purchase additional packs at any time from your dashboard.
+
+<Note>
+  Credit costs are shown consistently across the dashboard and the API. Each endpoint's reference page lists the exact credit cost per model. You can also check your remaining balance at any time from your account dashboard.
+</Note>
+
+## Response format
+
+All responses are JSON objects. Successful responses include a `success: true` field alongside the result data. Failed requests return a JSON error body with a `message` field explaining the problem.
+
+```json
+{
+  "success": true,
+  "request_id": "req_abc123xyz",
+  "credits_used": 100
+}
+```
+
+## Rate limits
+
+Requests are rate-limited per API key on a rolling 24-hour window:
+
+| Plan       | Requests per day |
+|------------|-----------------|
+| Free       | 100             |
+| Pro        | 1,000           |
+| Enterprise | Custom          |
+
+When you exceed your limit, the API returns `429 Too Many Requests`. Upgrade your plan or contact support to increase your limits.
+
+## Error responses
+
+The API uses standard HTTP status codes. Every error response includes a JSON body:
+
+```json
+{
+  "success": false,
+  "error": "invalid_api_key",
+  "message": "The API key provided is not valid."
+}
+```
+
+| Status code | Meaning                                                      |
+|-------------|--------------------------------------------------------------|
+| `400`       | Bad Request — missing or invalid parameters                  |
+| `401`       | Unauthorized — missing or invalid API key                    |
+| `402`       | Payment Required — insufficient credits                      |
+| `422`       | Unprocessable Entity — request is well-formed but invalid    |
+| `429`       | Too Many Requests — rate limit exceeded                      |
+| `500`       | Internal Server Error — something went wrong on our end      |
+
+## Available endpoints
+
+<Columns cols={2}>
+  <Card title="POST /v1/generate" icon="image" href="/api/generate-image">
+    Generate images from text prompts using a range of AI models.
+  </Card>
+  <Card title="POST /v1/edit" icon="pen-to-square" href="/api/edit-image">
+    Edit and transform existing images with AI instructions.
+  </Card>
+  <Card title="POST /v1/video" icon="video" href="/api/generate-video">
+    Generate videos from text prompts or a reference image.
+  </Card>
+  <Card title="POST /v1/tts" icon="volume-high" href="/api/text-to-speech">
+    Convert text to speech audio with ElevenLabs or Kling voices.
+  </Card>
+  <Card title="POST /v1/upscale" icon="expand" href="/api/upscale">
+    Upscale images to higher resolutions using AI.
+  </Card>
+  <Card title="POST /v1/remove-bg" icon="scissors" href="/api/remove-background">
+    Remove backgrounds from images and return a transparent PNG.
+  </Card>
+</Columns>
+
+## Next steps
+
+<Card title="Authenticate your first request" icon="key" href="/api/authentication">
+  Get your API key and make your first authenticated API call in under five minutes.
+</Card>
