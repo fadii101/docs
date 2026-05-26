@@ -1,0 +1,241 @@
+---
+title: "POST /v1/video — Generate Videos via API"
+description: "Generate AI videos from text prompts or reference images. Supports Google Veo, OpenAI Sora, Kling, WAN, and Seedance models with async polling."
+keywords: ["artnex video generation api", "text to video api", "veo3 api", "sora api", "kling api", "image to video api"]
+api: "POST /v1/video"
+---
+
+The `/v1/video` endpoint generates video clips from text prompts or a reference start image. Because video generation is computationally intensive, this endpoint is **asynchronous** — your initial request returns a `request_id`, and you poll the status endpoint until the video is ready.
+
+## Endpoint
+
+```
+POST https://api.artnex.ai/v1/video
+```
+
+## Request parameters
+
+<ParamField body="prompt" type="string" required>
+  Text description of the video you want to generate. Describe the scene, motion, style, and any camera movements. Maximum 4,000 characters.
+
+  **Example:** `"A drone flying slowly over a misty mountain range at sunrise, cinematic, 4K"`
+</ParamField>
+
+<ParamField body="model" type="string" required>
+  The video model to use. See the [Models](#models) table for all supported model IDs and their credit costs.
+</ParamField>
+
+<ParamField body="mode" type="string" default="text-to-video">
+  Generation mode. Use `"text-to-video"` to generate from a prompt alone, or `"image-to-video"` to animate a reference image. When using `"image-to-video"`, the `image` field is required.
+</ParamField>
+
+<ParamField body="image" type="string">
+  Start image for image-to-video generation. Required when `mode` is `"image-to-video"`. Provide a publicly accessible HTTPS URL or a base64-encoded image string.
+</ParamField>
+
+<ParamField body="aspect_ratio" type="string" default="16:9">
+  Output aspect ratio. Accepted values: `"16:9"`, `"9:16"`, `"1:1"`. Not all models support all ratios; unsupported values fall back to the model's default.
+</ParamField>
+
+<ParamField body="duration" type="integer">
+  Clip duration in seconds. Accepted values depend on the model (typically `4`–`12`). Refer to the model's supported durations in the [Models](#models) table.
+</ParamField>
+
+## Response fields
+
+<ResponseField name="request_id" type="string" required>
+  Unique identifier for your generation job. Use this to poll the status endpoint.
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Initial job status. Typically `"pending"` for new requests.
+</ResponseField>
+
+<ResponseField name="video_url" type="string">
+  Direct HTTPS URL to the generated video. This field is only present when `status` is `"completed"`. Videos are available for 24 hours.
+</ResponseField>
+
+<ResponseField name="credits_used" type="integer">
+  Credits deducted from your account when the job completes.
+</ResponseField>
+
+## Async polling
+
+Video generation takes between 30 seconds and several minutes depending on the model and clip length. After you receive a `request_id`, poll the status endpoint at regular intervals:
+
+```
+GET https://api.artnex.ai/v1/video/status/{request_id}
+```
+
+Poll every 5 seconds until `status` is `"completed"` or `"error"`. Do not poll more frequently than once per 5 seconds or your requests may be throttled.
+
+<Note>
+  Set a maximum polling timeout of 5 minutes (60 attempts at 5-second intervals). If a job does not complete within that window, treat it as failed and retry.
+</Note>
+
+## Models
+
+### Text-to-video models
+
+| Model ID | Credits | Supported durations | Aspect ratios |
+|---|---|---|---|
+| `veo3.1` | 3,000 | 4, 6, 8 s | 16:9, 9:16 |
+| `veo3-fast` | 2,000 | 4, 6, 8 s | 16:9, 9:16 |
+| `sora-2` | 3,500 | 4, 8, 12 s | 16:9, 9:16 |
+| `sora-2-pro` | 6,000 | 4, 8, 12 s | 16:9, 9:16 |
+| `kling-v2.5-turbo-pro` | 1,500 | 5, 10 s | 16:9, 9:16, 1:1 |
+| `kling-v2.6-pro` | 5,500 | 5, 10, 16 s | 16:9, 9:16, 1:1 |
+| `wan-2.5` | 3,500 | 5, 10 s | 16:9, 9:16, 1:1 |
+| `seedance-v1.5-pro-t2v` | 2,600 | 4–12 s | 16:9, 9:16, 1:1 |
+
+### Image-to-video models
+
+| Model ID | Credits | Supported durations |
+|---|---|---|
+| `veo3.1-i2v` | 3,500 | 4, 6, 8 s |
+| `veo3-fast-i2v` | 2,000 | 4, 6, 8 s |
+| `kling-v2.5-turbo-pro-i2v` | 1,500 | 5, 10 s |
+| `wan-2.5-i2v` | 1,500 | 5–10 s |
+| `seedance-v1.5-pro-i2v` | 1,500 | 4–12 s |
+
+## Example requests
+
+<CodeGroup>
+
+```bash curl
+# Text-to-video
+curl --request POST \
+  --url https://api.artnex.ai/v1/video \
+  --header "Authorization: Bearer YOUR_API_KEY" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "prompt": "A drone flying slowly over a misty mountain range at sunrise, cinematic, 4K",
+    "model": "veo3-fast",
+    "mode": "text-to-video",
+    "aspect_ratio": "16:9",
+    "duration": 6
+  }'
+```
+
+```python Python
+import time
+import requests
+
+API_KEY = "YOUR_API_KEY"
+HEADERS = {
+    "Authorization": f"Bearer {API_KEY}",
+    "Content-Type": "application/json",
+}
+
+# Start generation
+response = requests.post(
+    "https://api.artnex.ai/v1/video",
+    headers=HEADERS,
+    json={
+        "prompt": "A drone flying slowly over a misty mountain range at sunrise, cinematic, 4K",
+        "model": "veo3-fast",
+        "mode": "text-to-video",
+        "aspect_ratio": "16:9",
+        "duration": 6,
+    },
+)
+job = response.json()
+request_id = job["request_id"]
+
+# Poll for completion
+for _ in range(60):
+    time.sleep(5)
+    status_response = requests.get(
+        f"https://api.artnex.ai/v1/video/status/{request_id}",
+        headers=HEADERS,
+    )
+    status = status_response.json()
+    if status["status"] == "completed":
+        print("Video URL:", status["video_url"])
+        break
+    elif status["status"] == "error":
+        print("Generation failed:", status.get("message"))
+        break
+```
+
+```javascript JavaScript
+const API_KEY = "YOUR_API_KEY";
+const HEADERS = {
+  "Authorization": `Bearer ${API_KEY}`,
+  "Content-Type": "application/json",
+};
+
+// Start generation
+const startResponse = await fetch("https://api.artnex.ai/v1/video", {
+  method: "POST",
+  headers: HEADERS,
+  body: JSON.stringify({
+    prompt: "A drone flying slowly over a misty mountain range at sunrise, cinematic, 4K",
+    model: "veo3-fast",
+    mode: "text-to-video",
+    aspect_ratio: "16:9",
+    duration: 6,
+  }),
+});
+
+const { request_id } = await startResponse.json();
+
+// Poll for completion
+const poll = async (requestId, attempts = 60) => {
+  for (let i = 0; i < attempts; i++) {
+    await new Promise((r) => setTimeout(r, 5000));
+    const res = await fetch(
+      `https://api.artnex.ai/v1/video/status/${requestId}`,
+      { headers: HEADERS }
+    );
+    const data = await res.json();
+    if (data.status === "completed") return data.video_url;
+    if (data.status === "error") throw new Error(data.message);
+  }
+  throw new Error("Video generation timed out");
+};
+
+const videoUrl = await poll(request_id);
+console.log("Video URL:", videoUrl);
+```
+
+</CodeGroup>
+
+## Example responses
+
+**Initial response (job queued):**
+
+```json
+{
+  "request_id": "req_vid_abc123xyz",
+  "status": "pending",
+  "credits_used": 0
+}
+```
+
+**Status response (completed):**
+
+```json
+{
+  "request_id": "req_vid_abc123xyz",
+  "status": "completed",
+  "video_url": "https://cdn.artnex.ai/video/req_vid_abc123xyz/output.mp4",
+  "credits_used": 2000
+}
+```
+
+## Error codes
+
+| HTTP status | Error code | Cause |
+|-------------|------------|-------|
+| `400` | `missing_prompt` | The `prompt` field is absent or empty |
+| `400` | `invalid_model` | The `model` value is not a supported video model ID |
+| `400` | `invalid_mode` | `mode` must be `"text-to-video"` or `"image-to-video"` |
+| `400` | `missing_image` | `mode` is `"image-to-video"` but no `image` was provided |
+| `401` | `invalid_api_key` | The API key is missing, malformed, or revoked |
+| `402` | `insufficient_credits` | Your account does not have enough credits |
+| `429` | `rate_limit_exceeded` | You have exceeded your plan's daily request quota |
+
+<Tip>
+  Use `veo3-fast` (2,000 credits) or `kling-v2.5-turbo-pro` (1,500 credits) for iteration. Switch to `veo3.1` or `sora-2` for final production clips.
+</Tip>

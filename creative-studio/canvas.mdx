@@ -1,0 +1,206 @@
+---
+title: "Design Graphics on the Artnex Canvas"
+description: "A full-featured graphic design editor with AI assistance. Draw shapes, add text, remove backgrounds, and generate images — all in one canvas."
+keywords: ["canvas", "graphic design", "AI design", "background remover", "layers", "drawing tools"]
+---
+
+The Artnex Canvas is a full-featured graphic design editor built directly into the platform. You can draw shapes, place text, import images, remove backgrounds with one click, and ask the built-in AI assistant to generate or edit artwork — without leaving the editor.
+
+## Navigate to Canvas
+
+Go to **Tools → Canvas** in the left sidebar. The Canvas Projects page opens, showing all your saved designs. Click **New Project** to start a fresh canvas, or click any existing project thumbnail to reopen it.
+
+<Note>
+You must be signed in to create and save canvas projects. Projects auto-save every two seconds after any change.
+</Note>
+
+---
+
+## The editor layout
+
+When you open a project, the editor fills the screen with four main areas:
+
+<Columns cols={2}>
+  <Card title="Floating toolbar" icon="wrench">
+    Runs along the left side. Contains every drawing and shape tool.
+  </Card>
+  <Card title="Layer panel" icon="layers">
+    Slides in from the right. Lists every object on the canvas in stacking order.
+  </Card>
+  <Card title="AI Chat panel" icon="sparkles">
+    Slides in from the right. Send prompts to generate or edit images using AI.
+  </Card>
+  <Card title="Bottom bar" icon="sliders">
+    Shows zoom level and canvas status. Use it to zoom to fit or set a precise zoom percentage.
+  </Card>
+</Columns>
+
+---
+
+## Drawing tools
+
+Select a tool from the floating toolbar on the left, or use the keyboard shortcut listed below.
+
+| Tool | Shortcut | What it does |
+|---|---|---|
+| Select | `V` | Move, resize, and rotate objects |
+| Draw | `P` | Freehand pencil brush |
+| Pen | — | Bezier/path drawing |
+| Rectangle | — | Draw rectangles |
+| Circle | — | Draw ellipses and circles |
+| Triangle | — | Draw triangles |
+| Star | — | Draw star shapes |
+| Text | `T` | Click to place a text box |
+| Arrow | — | Draw arrows |
+| Hand | — | Pan the canvas without selecting objects |
+
+<Tip>
+Hold **Space** and drag at any time to pan the canvas, regardless of which tool is active. You can also use the middle mouse button to pan.
+</Tip>
+
+---
+
+## Working with layers
+
+Click the **Layers** button in the top-right area, or press `L`, to open the Layer panel. The panel lists every object on the canvas from top (front) to bottom (back).
+
+From the Layer panel you can:
+
+- Toggle visibility of any layer (click the eye icon)
+- Lock a layer to prevent accidental edits
+- Reorder layers by dragging them up or down
+- Identify object types at a glance (image, text, shape, etc.)
+
+---
+
+## AI Chat panel
+
+Click the **AI** button (sparkle icon) to open the AI Chat panel. You can:
+
+- Generate a new image by typing a description into the chat
+- Send an image already on the canvas to the AI and ask it to edit or transform the image
+- Switch between **Image** and **Video** generation modes using the toggle at the top of the panel
+
+Generated results appear directly on the canvas as new image objects that you can reposition and resize.
+
+---
+
+## Background remover
+
+Select any image on the canvas to reveal the object toolbar above it. Click **Remove Background** to instantly strip the background from the image. The processed result replaces the original image in place.
+
+<Note>
+Background removal requires a credit deduction. The exact cost is shown in the toolbar before you confirm.
+</Note>
+
+---
+
+## Undo and redo
+
+The canvas keeps a full history of up to 50 states.
+
+| Action | Shortcut |
+|---|---|
+| Undo | `Ctrl` / `⌘` + `Z` |
+| Redo | `Ctrl` / `⌘` + `Shift` + `Z` |
+
+You can also click the **Undo** and **Redo** buttons in the top bar.
+
+---
+
+## Keyboard shortcuts reference
+
+<AccordionGroup>
+  <Accordion title="Navigation">
+    | Action | Shortcut |
+    |---|---|
+    | Pan canvas | `Space` + Drag |
+    | Pan canvas | Middle-click + Drag |
+    | Zoom in / out | `Ctrl` / `⌘` + `+` / `-` |
+    | Zoom with scroll | `Ctrl` / `⌘` + Scroll |
+    | Zoom to fit | `Shift` + `1` |
+  </Accordion>
+  <Accordion title="Tools">
+    | Action | Shortcut |
+    |---|---|
+    | Select tool | `V` |
+    | Pen / Draw tool | `P` |
+    | Add text | `T` |
+    | Toggle layers panel | `L` |
+  </Accordion>
+  <Accordion title="Editing">
+    | Action | Shortcut |
+    |---|---|
+    | Undo | `Ctrl` / `⌘` + `Z` |
+    | Redo | `Ctrl` / `⌘` + `Shift` + `Z` |
+    | Duplicate selection | `Ctrl` / `⌘` + `D` |
+    | Select all | `Ctrl` / `⌘` + `A` |
+    | Delete selected | `Delete` / `Backspace` |
+  </Accordion>
+  <Accordion title="File">
+    | Action | Shortcut |
+    |---|---|
+    | Save | `Ctrl` / `⌘` + `S` |
+    | Export canvas | `Ctrl` / `⌘` + `E` |
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Export your design
+
+Click the **Download** button (top-right) or press `Ctrl` / `⌘` + `E` to export the canvas as a PNG file. The file is saved to your browser's default download location named `artnex-canvas-<timestamp>.png`.
+
+<Tip>
+If you have individual images on the canvas that you want to download separately, select the image and use the per-object download option in the object toolbar.
+</Tip>
+
+---
+
+## Saving and managing projects
+
+The canvas **auto-saves** every two seconds after any change. The save status indicator in the top bar shows **Saved**, **Saving**, or **Unsaved**.
+
+To save manually at any time, press `Ctrl` / `⌘` + `S`.
+
+Return to **Tools → Canvas** to see all your projects. From the Canvas Projects page you can:
+
+- Open a project by clicking its thumbnail
+- **Rename** a project from the three-dot menu
+- **Duplicate** a project to branch off a copy
+- **Delete** a project (this is permanent and cannot be undone)
+
+<Warning>
+Deleting a project is permanent. There is no way to recover a deleted project.
+</Warning>
+
+---
+
+## Create your first design
+
+<Steps>
+  <Step title="Open Canvas Projects">
+    Go to **Tools → Canvas** in the sidebar. The Canvas Projects page opens.
+  </Step>
+  <Step title="Create a new project">
+    Click the **New Project** card. The editor opens with a blank canvas.
+  </Step>
+  <Step title="Add a background shape">
+    Select the **Rectangle** tool from the floating toolbar. Click and drag on the canvas to draw a rectangle that covers the whole area. Use the shape toolbar that appears to set a fill color.
+  </Step>
+  <Step title="Add text">
+    Press `T` to activate the Text tool. Click anywhere on the canvas to place a text box and type your content. Use the text toolbar to change the font, size, and color.
+  </Step>
+  <Step title="Import an image">
+    Click the **Image** icon in the floating toolbar to open a file picker. Select an image from your computer. The image is placed on the canvas as a new layer.
+  </Step>
+  <Step title="Remove the image background">
+    With the image selected, click **Remove Background** in the object toolbar. Artnex processes the image and replaces it with a version that has a transparent background.
+  </Step>
+  <Step title="Ask the AI to generate additional artwork">
+    Click the **AI** button to open the AI Chat panel. Type a description of what you want, for example `A minimalist mountain landscape at sunset`, and press Enter. The generated image appears on the canvas.
+  </Step>
+  <Step title="Export your design">
+    Press `Ctrl` / `⌘` + `E` to download the finished design as a PNG.
+  </Step>
+</Steps>

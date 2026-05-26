@@ -1,0 +1,138 @@
+---
+title: "Buy and Manage Your Artnex Credits"
+description: "Understand how Artnex credits work, compare Starter, Creator, and Pro packs, and top up your balance to use across every AI tool with no expiry."
+keywords: ["credits", "buy credits", "credit packs", "pricing", "billing", "stripe", "artnex credits"]
+---
+
+Artnex uses a credit system instead of a subscription. You buy a pack of credits once and spend them as you generate — images, videos, audio, and more. There are no monthly fees and no expiration dates. When you need more, you top up.
+
+## How credits work
+
+Every AI tool on Artnex has a credit cost. When you run a generation, the cost is deducted from your balance. Costs vary depending on the model and output type — lightweight image tools cost far fewer credits than high-end video models.
+
+Every tool shows its credit cost before you generate, so you always know what you'll spend. As a rough guide, $10 buys you 10,000 credits, which works out to roughly **$0.001 per credit**.
+
+<Note>
+  Credits are not a subscription. You pay once and use your balance until it runs out. There are no automatic renewals.
+</Note>
+
+## Check your credit balance
+
+Your current balance appears in two places:
+
+- **Dashboard** — shown as a badge near the top of the page when you're logged in.
+- **Profile page** — go to `/profile` and look for the Credits badge in your profile header.
+
+## Credit packs
+
+Artnex offers three one-time credit packs, processed securely through Stripe.
+
+| Pack | Price | Credits | Price per credit |
+|------|-------|---------|-----------------|
+| Starter Pack | $10 | 10,000 | $0.001 |
+| Creator Pack | $50 | 50,000 | $0.001 |
+| Pro Pack | $100 | 100,000 | $0.001 |
+
+All three packs have the same per-credit rate. The difference is how much you purchase upfront — larger packs simply mean fewer trips to the checkout.
+
+<CardGroup cols={3}>
+  <Card title="Starter Pack" icon="sparkles">
+    **$10 · 10,000 credits**
+
+    Good for trying out tools. Covers roughly 100 Z-Image Turbo images, 41 Nano Banana images, or 5 Veo 3 Fast videos.
+  </Card>
+  <Card title="Creator Pack" icon="crown">
+    **$50 · 50,000 credits**
+
+    Best value for regular use. Covers roughly 500 Z-Image Turbo images, 208 Nano Banana images, or 25 Veo 3 Fast videos.
+  </Card>
+  <Card title="Pro Pack" icon="zap">
+    **$100 · 100,000 credits**
+
+    Maximum volume for power users. Covers roughly 1,000 Z-Image Turbo images, 416 Nano Banana images, or 50 Veo 3 Fast videos.
+  </Card>
+</CardGroup>
+
+## How to buy credits
+
+<Steps>
+  <Step title="Go to the pricing page">
+    Visit [artnex.ai/pricing](https://artnex.ai/pricing) or click **Buy Credits** from your profile or dashboard.
+  </Step>
+  <Step title="Choose a pack">
+    Select the Starter, Creator, or Pro Pack based on how many credits you need.
+  </Step>
+  <Step title="Log in if prompted">
+    If you're not logged in, Artnex redirects you to the login page first, then returns you to pricing after authentication.
+  </Step>
+  <Step title="Complete Stripe checkout">
+    You're taken to a secure Stripe checkout page. Enter your payment details and confirm the purchase.
+  </Step>
+  <Step title="Credits are added instantly">
+    After a successful payment, Artnex verifies the transaction and adds your credits immediately. You'll see a confirmation message and your updated balance on your profile page.
+  </Step>
+</Steps>
+
+<Tip>
+  After a successful purchase, Artnex redirects you to `/profile?payment=success`. If your balance doesn't update within a few seconds, refresh the page. If credits still aren't showing after a minute, contact support — do not complete the checkout a second time.
+</Tip>
+
+## What happens when you run out of credits
+
+If your balance reaches zero, Artnex blocks new generations. You'll see an error when you try to run a tool. To continue, purchase a credit pack and your balance will be topped up immediately.
+
+## Credit costs by tool category
+
+Credit costs are shown as display credits (the numbers you see in the app).
+
+| Tool | Display credits |
+|------|----------------|
+| Background Remover | 10 |
+| Text-to-Speech (ElevenLabs) | 10 |
+| Ghibli Style | 50 |
+| Recraft 20B SVG | 50 |
+| Headshots | 40 |
+| Product Photography | 40 |
+| Z-Image Turbo | 100 |
+| Image Upscaler | 100 |
+| Recraft V3 SVG | 80 |
+| Face Swap | 80 |
+| SeedDream v4 | 200 |
+| Nano Banana | 240 |
+| Flux 2 Pro | 250 |
+| Image Expander | 300 |
+| Voice Cloning | 500 |
+| Nano Banana Pro | 800 |
+| SeedDream v4.5 | 800 |
+| Pro Ultra (8K) | 1,000 |
+| Kling v2.5 Turbo (image-to-video) | 1,200 |
+| Veo 3 Fast | 2,000 |
+| Veo 3 | 2,500 |
+| Sora 2 | 3,500 |
+| Kling v2.6 Pro | 5,500 |
+
+<Note>
+  Video upscaling is billed per second of video processed, not per generation. Lip-sync and avatar models have higher costs — see the full breakdown on the pricing page.
+</Note>
+
+## Frequently asked questions
+
+<Accordion title="Do credits expire?">
+  No. Credits you purchase never expire. You can buy a pack today and use the credits months later — there's no time limit.
+</Accordion>
+
+<Accordion title="Can I get a refund on unused credits?">
+  Credits are one-time purchases and are generally non-refundable once bought. If you believe you were charged in error or experienced a technical issue during checkout, contact Artnex support with your payment details and session ID.
+</Accordion>
+
+<Accordion title="Can I use credits across all tools?">
+  Yes. Credits are shared across your entire account and work with every AI tool on the platform — image generation, video, audio, image editing, and processing tools all draw from the same balance.
+</Accordion>
+
+<Accordion title="Is my payment information stored by Artnex?">
+  No. Payment processing is handled entirely by Stripe. Artnex never stores your card details.
+</Accordion>
+
+<Accordion title="What if my payment went through but credits weren't added?">
+  Go to your profile page (`/profile`). If the credits aren't showing, wait up to one minute for the verification to complete, then refresh. If the problem persists, contact support with your Stripe session ID — do not attempt to purchase again.
+</Accordion>

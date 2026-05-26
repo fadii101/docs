@@ -1,0 +1,122 @@
+{
+  "projectType": "saas",
+  "projectName": "Artnex",
+  "projectDescription": "Artnex is an AI-powered creative platform that lets users generate and edit images, videos, and audio, design graphics on a canvas, and automate workflows — all using a credit-based system.",
+  "theme": "almond",
+  "primaryColor": "#e55b6b",
+  "lightColor": "#6767e3",
+  "darkColor": "#0c0c0c",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "credits-and-pricing"
+            ]
+          },
+          {
+            "group": "Image Tools",
+            "pages": [
+              "image-tools/imagezen",
+              "image-tools/background-remover",
+              "image-tools/image-upscaler",
+              "image-tools/headshots",
+              "image-tools/product-photography"
+            ]
+          },
+          {
+            "group": "Video Tools",
+            "pages": [
+              "video-tools/videozen",
+              "video-tools/video-extend",
+              "video-tools/lip-sync",
+              "video-tools/video-upscaler"
+            ]
+          },
+          {
+            "group": "Audio Tools",
+            "pages": [
+              "audio-tools/text-to-speech",
+              "audio-tools/voice-cloning",
+              "audio-tools/music-generator",
+              "audio-tools/sound-effects"
+            ]
+          },
+          {
+            "group": "Creative Studio",
+            "pages": [
+              "creative-studio/canvas",
+              "creative-studio/templates",
+              "creative-studio/nodezen"
+            ]
+          },
+          {
+            "group": "Account & Billing",
+            "pages": [
+              "account/signup-and-login",
+              "account/managing-credits",
+              "account/profile-settings"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "api/overview",
+              "api/authentication"
+            ]
+          },
+          {
+            "group": "Endpoints",
+            "pages": [
+              "api/generate-image",
+              "api/edit-image",
+              "api/generate-video",
+              "api/text-to-speech",
+              "api/upscale",
+              "api/remove-background"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              "api/n8n-integration"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "AI image generation with multiple models (Z-Image Turbo, Flux 2 Pro, Seedream, GPT Image 2)",
+    "AI video generation with text-to-video and image-to-video (Veo3.1, Sora 2, Kling, Wan)",
+    "Audio tools: text-to-speech, voice cloning, music generation, sound effects",
+    "Canvas design editor with AI assistance and background removal",
+    "NodeZen visual workflow builder for automating AI pipelines",
+    "Templates gallery with face swap, style transfer, and special effects",
+    "Credit-based pricing: Starter ($10), Creator ($50), Pro ($100) packs",
+    "n8n webhook integration for workflow automation",
+    "Prompt Enhancer and JSON Prompt Generator tools"
+  ],
+  "publicApiSurface": [
+    "POST /v1/generate — Generate images from text prompts",
+    "POST /v1/edit — Edit and modify existing images",
+    "POST /v1/upscale — Upscale images to higher resolutions",
+    "POST /v1/remove-bg — Remove backgrounds from images",
+    "POST /v1/video — Generate videos (text-to-video or image-to-video)",
+    "POST /v1/tts — Text-to-speech conversion",
+    "POST /v1/product-photo — Professional product photography",
+    "POST /v1/headshots — Professional headshot generation",
+    "POST /v1/prompt-enhance — AI-powered prompt optimization",
+    "n8n webhook trigger for creative workflow events"
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "almond",
+  "name": "Artnex",
+  "description": "AI-powered creative platform for generating and editing images, videos, and audio.",
+  "colors": {
+    "primary": "#6767e3",
+    "light": "#6767e3",
+    "dark": "#0c0c0c"
+  },
+  "favicon": "/favicon.png",
+  "logo": {
+    "light": "/logo/dark.webp",
+    "dark": "/logo/head.webp"
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs"
+  },
+  "contextual": {
+    "options": ["copy", "view", "assistant", "mcp", "add-mcp"]
+  },
+  "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Home",
+          "icon": "house",
+          "href": "/"
+        },
+        {
+          "anchor": "Help",
+          "icon": "life-buoy",
+          "href": "/help"
+        }
+      ]
+    },
+    "directory": "card",
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "icon": "rocket",
+            "expanded": true,
+            "pages": [
+              "introduction",
+              "quickstart",
+              "credits-and-pricing",
+              "creative-studio/templates"
+            ]
+          },
+          {
+            "group": "Image Tools",
+            "icon": "image",
+            "expanded": true,
+            "pages": [
+              "image-tools/imagezen",
+              "image-tools/background-remover",
+              "image-tools/image-upscaler",
+              "image-tools/headshots",
+              "image-tools/product-photography"
+            ]
+          },
+          {
+            "group": "Video Tools",
+            "icon": "video",
+            "expanded": true,
+            "pages": [
+              "video-tools/videozen",
+              "video-tools/video-extend",
+              "video-tools/lip-sync",
+              "video-tools/video-upscaler"
+            ]
+          },
+          {
+            "group": "Audio Tools",
+            "icon": "volume-2",
+            "expanded": true,
+            "pages": [
+              "audio-tools/text-to-speech",
+              "audio-tools/voice-cloning",
+              "audio-tools/music-generator",
+              "audio-tools/sound-effects"
+            ]
+          },
+          {
+            "group": "Account & Billing",
+            "icon": "user",
+            "expanded": true,
+            "pages": [
+              "account/signup-and-login",
+              "account/managing-credits",
+              "account/profile-settings"
+            ]
+          },
+          {
+            "group": "Changelog",
+            "icon": "history",
+            "expanded": true,
+            "pages": [
+              "changelog"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "search": {
+    "location": "header"
+  },
+  "navbar": {
+    "links": [],
+    "primary": {
+      "type": "button",
+      "label": "Get Started",
+      "href": "https://artnex.app/login"
+    }
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/artnex_ai"
+    }
+  },
+  "fonts": {
+    "family": "Poppins"
+  }
+}
