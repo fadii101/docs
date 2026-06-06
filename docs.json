@@ -31,11 +31,6 @@
           "href": "/"
         },
         {
-          "anchor": "API Reference",
-          "icon": "code",
-          "href": "/api/overview"
-        },
-        {
           "anchor": "Help",
           "icon": "life-buoy",
           "href": "https://artnex.ai/help"
