@@ -1,0 +1,203 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "almond",
+  "name": "Artnex",
+  "description": "AI-powered creative platform for generating and editing images, videos, and audio.",
+  "colors": {
+    "primary": "#6767e3",
+    "light": "#6767e3",
+    "dark": "#0c0c0c"
+  },
+  "favicon": "/favicon.webp",
+  "logo": {
+    "light": "/logo/dark.webp",
+    "dark": "/logo/head.webp"
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs"
+  },
+  "contextual": {
+    "options": ["copy", "view", "assistant", "mcp", "add-mcp"]
+  },
+  "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Home",
+          "icon": "house",
+          "href": "/"
+        },
+        {
+          "anchor": "Help",
+          "icon": "life-buoy",
+          "href": "/help"
+        }
+      ]
+    },
+    "directory": "card",
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "icon": "rocket",
+            "expanded": true,
+            "pages": [
+              "introduction",
+              "quickstart",
+              "credits-and-pricing",
+              "creative-studio/templates"
+            ]
+          },
+          {
+            "group": "Image Tools",
+            "icon": "image",
+            "expanded": true,
+            "pages": [
+              "image-tools/imagezen",
+              "image-tools/background-remover",
+              "image-tools/image-upscaler",
+              "image-tools/headshots",
+              "image-tools/product-photography"
+            ]
+          },
+          {
+            "group": "Video Tools",
+            "icon": "video",
+            "expanded": true,
+            "pages": [
+              "video-tools/videozen",
+              "video-tools/video-extend",
+              "video-tools/lip-sync",
+              "video-tools/video-upscaler"
+            ]
+          },
+          {
+            "group": "Audio Tools",
+            "icon": "volume-2",
+            "expanded": true,
+            "pages": [
+              "audio-tools/text-to-speech",
+              "audio-tools/voice-cloning",
+              "audio-tools/music-generator",
+              "audio-tools/sound-effects"
+            ]
+          },
+          {
+            "group": "Account & Billing",
+            "icon": "user",
+            "expanded": true,
+            "pages": [
+              "account/signup-and-login",
+              "account/managing-credits",
+              "account/profile-settings"
+            ]
+          },
+          {
+            "group": "Changelog",
+            "icon": "history",
+            "expanded": true,
+            "pages": [
+              "changelog"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "search": {
+    "location": "header"
+  },
+  "navbar": {
+    "links": [
+      {
+        "href": "/changelog",
+        "label": "Changelog"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Get Started",
+      "href": "https://artnex.app/login"
+    }
+  },
+  "footer": {
+    "links": [
+      {
+        "header": "Products",
+        "items": [
+          {
+            "label": "ImageZen",
+            "href": "/image-tools/imagezen"
+          },
+          {
+            "label": "VideoZen",
+            "href": "/video-tools/videozen"
+          },
+          {
+            "label": "VoiceZen",
+            "href": "/audio-tools/text-to-speech"
+          },
+          {
+            "label": "Templates",
+            "href": "/creative-studio/templates"
+          }
+        ]
+      },
+      {
+        "header": "Resources",
+        "items": [
+          {
+            "label": "Documentation",
+            "href": "/introduction"
+          },
+          {
+            "label": "Changelog",
+            "href": "/changelog"
+          },
+          {
+            "label": "Credits & Pricing",
+            "href": "/credits-and-pricing"
+          },
+          {
+            "label": "Help",
+            "href": "/help"
+          }
+        ]
+      },
+      {
+        "header": "Company",
+        "items": [
+          {
+            "label": "Artnex.app",
+            "href": "https://artnex.app"
+          },
+          {
+            "label": "Contact Us",
+            "href": "mailto:support@artnex.app"
+          }
+        ]
+      },
+      {
+        "header": "Legal",
+        "items": [
+          {
+            "label": "Privacy Policy",
+            "href": "https://artnex.app/privacy"
+          },
+          {
+            "label": "Terms of Service",
+            "href": "https://artnex.app/terms"
+          }
+        ]
+      }
+    ]
+  },
+  "fonts": {
+    "family": "Poppins"
+  }
+}

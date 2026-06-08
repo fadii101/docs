@@ -1,0 +1,152 @@
+---
+title: "POST /v1/tts — Text-to-Speech API Reference"
+description: "Convert text to natural-sounding speech audio via the Artnex API. Choose ElevenLabs or Kling voices and get a direct audio URL in the response."
+keywords: ["artnex text to speech api", "tts api", "elevenlabs api", "kling tts", "voice synthesis api"]
+api: "POST /v1/tts"
+---
+
+The `/v1/tts` endpoint converts a text string into a natural-sounding audio file. You choose the voice model and an optional voice identifier; the API returns a URL to the generated audio file you can stream or download directly.
+
+## Endpoint
+
+```
+POST https://api.artnex.ai/v1/tts
+```
+
+## Request parameters
+
+<ParamField body="text" type="string" required>
+  The text to convert to speech. Plain text only — no HTML or SSML markup. Maximum 5,000 characters per request.
+</ParamField>
+
+<ParamField body="model" type="string" default="tts-elevenlabs">
+  The speech synthesis model to use. Accepted values:
+
+  - `"tts-elevenlabs"` — ElevenLabs voice synthesis (10 credits). High-quality, natural-sounding output. Best for narration, marketing, and content creation.
+  - `"kling-tts"` — Kling voice synthesis (100 credits). Extended capabilities for longer-form audio.
+</ParamField>
+
+<ParamField body="voice_id" type="string">
+  Identifier of the voice to use. Available voices depend on the chosen model. If omitted, the model's default voice is used. Contact support for a full list of available voice IDs for your plan.
+</ParamField>
+
+## Response fields
+
+<ResponseField name="success" type="boolean" required>
+  `true` when the request completed successfully.
+</ResponseField>
+
+<ResponseField name="audio_url" type="string" required>
+  Direct HTTPS URL to the generated audio file (MP3 format). The file is available for 24 hours; download it promptly if you need to keep it.
+</ResponseField>
+
+<ResponseField name="duration_seconds" type="number">
+  Duration of the generated audio clip in seconds.
+</ResponseField>
+
+<ResponseField name="request_id" type="string">
+  Unique identifier for this request, useful for support queries or logging.
+</ResponseField>
+
+<ResponseField name="credits_used" type="integer">
+  Total credits deducted from your account balance for this request.
+</ResponseField>
+
+## Credit costs
+
+| Model | Credits per request |
+|---|---|
+| `tts-elevenlabs` | 10 |
+| `kling-tts` | 100 |
+
+<Note>
+  Credit costs are fixed per request regardless of text length, up to the 5,000-character limit. Break very long content into multiple requests if needed.
+</Note>
+
+## Example requests
+
+<CodeGroup>
+
+```bash curl
+curl --request POST \
+  --url https://api.artnex.ai/v1/tts \
+  --header "Authorization: Bearer YOUR_API_KEY" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "text": "Welcome to Artnex, the AI-powered creative platform built for modern creators.",
+    "model": "tts-elevenlabs",
+    "voice_id": "rachel"
+  }'
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    "https://api.artnex.ai/v1/tts",
+    headers={
+        "Authorization": "Bearer YOUR_API_KEY",
+        "Content-Type": "application/json",
+    },
+    json={
+        "text": "Welcome to Artnex, the AI-powered creative platform built for modern creators.",
+        "model": "tts-elevenlabs",
+        "voice_id": "rachel",
+    },
+)
+
+data = response.json()
+print("Audio URL:", data["audio_url"])
+print("Duration:", data["duration_seconds"], "seconds")
+print("Credits used:", data["credits_used"])
+```
+
+```javascript JavaScript
+const response = await fetch("https://api.artnex.ai/v1/tts", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    text: "Welcome to Artnex, the AI-powered creative platform built for modern creators.",
+    model: "tts-elevenlabs",
+    voice_id: "rachel",
+  }),
+});
+
+const data = await response.json();
+console.log("Audio URL:", data.audio_url);
+console.log("Duration:", data.duration_seconds, "seconds");
+console.log("Credits used:", data.credits_used);
+```
+
+</CodeGroup>
+
+## Example response
+
+```json
+{
+  "success": true,
+  "audio_url": "https://cdn.artnex.ai/tts/req_tts_abc123xyz/output.mp3",
+  "duration_seconds": 4.8,
+  "request_id": "req_tts_abc123xyz",
+  "credits_used": 10
+}
+```
+
+## Error codes
+
+| HTTP status | Error code | Cause |
+|-------------|------------|-------|
+| `400` | `missing_text` | The `text` field is absent or empty |
+| `400` | `text_too_long` | The `text` exceeds 5,000 characters |
+| `400` | `invalid_model` | The `model` value is not `"tts-elevenlabs"` or `"kling-tts"` |
+| `400` | `invalid_voice_id` | The `voice_id` is not available for the selected model |
+| `401` | `invalid_api_key` | The API key is missing, malformed, or revoked |
+| `402` | `insufficient_credits` | Your account does not have enough credits |
+| `429` | `rate_limit_exceeded` | You have exceeded your plan's daily request quota |
+
+<Tip>
+  Use `tts-elevenlabs` (10 credits) for the vast majority of use cases. Reserve `kling-tts` for workflows that specifically require its extended capabilities or voice characteristics.
+</Tip>
